@@ -1,0 +1,120 @@
+/* header */
+section[role="region"] > header:first-child .icon-home {
+    background-image: url(images/icons/home.png);
+}
+section[role="region"] > header:first-child .icon-book {
+    background-image: url(images/icons/book.png);
+}
+section[role="region"] > header:first-child h1 {
+    text-align: left !important;
+    padding-left: 2rem;
+}
+
+/* main */
+section#index {
+    height: 100%;
+}
+
+article#main {
+    /* 100% minus header and subheader */
+    height: calc(100% - 8.5rem);
+    padding-top: 0.5rem;
+}
+
+header span#reader-book, header span#reader-chapter {
+    font-weight: bold;
+}
+
+/* text selector */
+article.content {
+    padding: 0;
+}
+
+ul#book-selector-list > li a {
+    border-bottom: 1px solid #EEE;
+    cursor: pointer;
+    display: block;
+    margin: 0 10px;
+    padding: 10px 5px;
+}
+
+ul#chapter-selector-list, ul#verse-selector-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+ul#chapter-selector-list > li, ul#verse-selector-list > li {
+    flex-grow: 1;
+    margin: 2rem;
+    width: 2rem;
+}
+
+ul#chapter-selector-list > li a, ul#verse-selector-list > li a {
+    display: block;
+    line-height: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* reader */
+ul#reader-verses {
+    margin-bottom: 5rem;
+}
+
+ul#reader-verses li {
+    border-bottom: 1px dashed #EEE;
+    padding: 7px;
+}
+
+ul#reader-verses li span.verse-number {
+    color: #AAA;
+    font-size: 80%;
+    margin: 10px;
+}
+
+ul#reader-verses li.selected:not(.copyright) span.verse-text {
+    background: #222;
+    color: #FFF;
+}
+
+ul#reader-verses li.copyright {
+    text-align: center;
+}
+
+ul#reader-verses li.copyright a {
+    color: #222;
+    font-size: 75%;
+    text-decoration: none;
+}
+
+/* pages animation */
+[data-position="right"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(100%);
+    z-index: 15;
+    z-index: 100; /* -> drawer */
+}
+section[role="region"][data-position="right"] {
+    position: absolute;
+}
+[data-position="right"].current {
+    animation: rightToCurrent 0.4s forwards;
+}
+[data-position="right"].right {
+    animation: currentToRight 0.4s forwards;
+}
+[data-position="right"].left {
+    animation: currentToLeft 0.4s forwards;
+}
+[data-position="current"].left {
+    animation: currentToLeft 0.4s forwards;
+}
+[data-position="current"].current {
+    animation: leftToCurrent 0.4s forwards;
+}

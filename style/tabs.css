@@ -1,0 +1,36 @@
+.bb-tablist > li.current > a,
+.bb-tablist > li.current > button {
+  color: #00aacc;
+  font-weight: 500;
+  background-position: 50% 100%;
+}
+
+.bb-tablist > li.current > a:after,
+.bb-tablist > li.current > button:after {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top:0;
+  height: calc(100% - 0.3rem);
+  border-bottom: 0.3rem solid #00aacc;
+}
+
+.bb-tablist > li.current > a:active,
+.bb-tablist > li.current > button:active {
+  color: #5f5f5f;
+  background-position: 50% 0;
+}
+
+.bb-tablist.skin-dark > li.current > a:active,
+.bb-tablist.skin-dark > li.current > button:active {
+  background-color: #00aacc;
+  color: #fff;
+}
+
+.bb-tablist .current .bb-tabpanel,
+.bb-tablist [aria-selected="true"] ~.bb-tabpanel {
+  z-index: -1;
+  visibility: visible;
+}

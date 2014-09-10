@@ -1,0 +1,103 @@
+/* Go deeper */
+@keyframes rightToCurrent {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+@-webkit-keyframes rightToCurrent {
+  0%   { -webkit-transform: translateX(100%); }
+  100% { -webkit-transform: translateX(0); }
+}
+
+@keyframes currentToLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+@-webkit-keyframes currentToLeft {
+  0%   { -webkit-transform: translateX(0); }
+  100% { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes currentToRight {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+@-webkit-keyframes currentToRight {
+  0%   { -webkit-transform: translateX(0); }
+  100% { -webkit-transform: translateX(100%); }
+}
+
+@keyframes leftToCurrent {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+@-webkit-keyframes leftToCurrent {
+  0%   { -webkit-transform: translateX(-100%); }
+  100% { -webkit-transform: translateX(0); }
+}
+
+@keyframes headerCurrentToLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-20%); }
+}
+@-webkit-keyframes headerCurrentToLeft {
+  0%   { -webkit-transform: translateX(0); }
+  100% { -webkit-transform: translateX(-20%); }
+}
+
+@keyframes headerLeftToCurrent {
+  0%   { transform: translateX(-20%); }
+  100% { transform: translateX(0); }
+}
+@-webkit-keyframes headerLeftToCurrent {
+  0%   { -webkit-transform: translateX(-20%); }
+  100% { -webkit-transform: translateX(0); }
+}
+
+/* Generic */
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-webkit-keyframes fadeOut {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes show {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+@-webkit-keyframes show {
+  0%   { -webkit-transform: translateY(100%); }
+  100% { -webkit-transform: translateY(0); }
+}
+
+@keyframes hide {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+@-webkit-keyframes hide {
+  0%   { -webkit-transform: translateY(0); }
+  100% { -webkit-transform: translateY(100%); }
+}
+
+/* Building Blocks */
+/* Status */
+section[role="status"] {
+  animation: hide .3s forwards;
+  -webkit-animation: hide .3s forwards;
+}
+
+section[role="status"].onviewport {
+  animation: show .3s forwards;
+  -webkit-animation: show .3s forwards;
+}
