@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="style/bb/style/tabs.css" />
         <link rel="stylesheet" type="text/css" href="style/bb/style/buttons.css">
         <link rel="stylesheet" type="text/css" href="style/bb/util.css" />
+        <link rel="stylesheet" type="text/css" href="style/bb/progress_activity.css" />
         <link rel="stylesheet" type="text/css" href="style/bb/transitions.css" />
 
         <link rel="stylesheet" type="text/css" href="style/bb/style/icons.css" />
@@ -34,7 +35,7 @@
             </header>
 
             <article id="main" class="content scrollable">
-                <ul id="reader-verses">
+                <ul id="reader-verses" class="invisible">
                 </ul>
                 <div role="toolbar">
                     <ul>
@@ -45,6 +46,9 @@
                         <li><button id="btn-prev-chapter" class="action-icon back">previous</button></li>
                         <li><button id="btn-next-chapter" class="action-icon forward">next</button></li>
                     </ul>
+                </div>
+                <div id="main-progress">
+                   <progress></progress>
                 </div>
             </article>
         </section>
@@ -84,7 +88,7 @@
             </article>
         </section>
 
-        <script src="bibles/ar.js" type="text/javascript"></script>
+        <script src="js/promise-6.0.0.min.js" type="text/javascript"></script>
         <script src="js/biblefox.js" type="text/javascript"></script>
         <script src="js/app.js" type="text/javascript"></script>
         <script src="js/buttons.js" type="text/javascript"></script>

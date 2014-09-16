@@ -13,13 +13,15 @@ document.querySelector('#btn-verse-selector-back').addEventListener('click', fun
 });
 
 document.querySelector('#btn-prev-chapter').addEventListener('click', function() {
-    if (biblefox.previousChapter())
+    biblefox.previousChapter().then(function() {
         updateReader();
+    });
 });
 
 document.querySelector('#btn-next-chapter').addEventListener('click', function() {
-    if (biblefox.nextChapter())
-        updateReader();
+    biblefox.nextChapter().then(function() {
+        updateReader(); 
+    });
 });
 
 var home_btns = document.querySelectorAll('#btn-home');

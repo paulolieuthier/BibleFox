@@ -25,6 +25,18 @@ header span#reader-book, header span#reader-chapter {
     font-weight: bold;
 }
 
+#main-progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    display: block;
+}
+
+.invisible {
+    display: none !important;
+}
+
 /* text selector */
 article.content {
     padding: 0;
