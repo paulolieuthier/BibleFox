@@ -7,22 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function showChaptersList() {
-    document.querySelector('#chapter-selector').className = 'current';
-}
-
-function showVersesList() {
-    document.querySelector('#verse-selector').className = 'current';
-}
-
-function showHome() {
-    document.querySelector('#verse-selector').className = 'right';
-    document.querySelector('#chapter-selector').className = 'right';
-    document.querySelector('#book-selector').className = 'right';
-}
-
 function updateShareButton() {
     document.querySelector('#btn-share').disabled = (biblefox.reader.numberOfSelectedVerses <= 0);
+}
+
+function updateSelectorHeader(book, chapter) {
+    var h1 = document.querySelector('#text-selector > header h1');
+    biblefox.bookName(book).then(function(title) {
+        h1.innerHTML = title;
+        if (chapter !== undefined)
+            h1.innerHTML = h1.innerHTML + ' ' + chapter;
+    });
 }
 
 function updateSelector() {
@@ -42,6 +37,7 @@ function updateSelector() {
             book_a.addEventListener('click', function() {
                 chapters_ul.innerHTML = '';
                 var book = this.dataset.book;
+                updateSelectorHeader(book);
                 biblefox.chapters(book).then(function(chapters) {
                     showChaptersList();
                     for (var j = 0; j < chapters.length; j++) {
@@ -57,6 +53,7 @@ function updateSelector() {
                             verses_ul.innerHTML = '';
                             book = this.dataset.book;
                             var chapter = this.dataset.chapter;
+                            updateSelectorHeader(book, chapter);
                             biblefox.verses(book, chapter).then(function(verses) {
                                 showVersesList();
                                 for (var k = 0; k < verses.length; k++) {

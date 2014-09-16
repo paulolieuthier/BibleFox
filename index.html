@@ -19,13 +19,12 @@
         <link rel="stylesheet" type="text/css" href="style/bb/icons/styles/settings_icons.css">
 
         <link rel="stylesheet" type="text/css" href="style/main.css" />
-        <link rel="stylesheet" type="text/css" href="style/tabs.css" />
     </head>
     <body role="application">
         <section id="index" role="region" data-position="current">
             <header>
                 <menu id="toolbar">
-                    <button id="btn-book-selector" class="icon icon-book">books</button>
+                    <button id="btn-text-selector" class="icon icon-book">books</button>
                 </menu>
                 <h1>BibleFox</h1>
             </header>
@@ -48,43 +47,37 @@
                     </ul>
                 </div>
                 <div id="main-progress">
-                   <progress></progress>
+                    <progress></progress>
                 </div>
             </article>
         </section>
 
-        <!-- text selection -->
-        <section id="book-selector" role="region" data-position="right">
+        <section id="text-selector" role="region" data-position="right">
             <header class="fixed">
-                <button id="btn-book-selector-back" class="icon icon-back">back</button>
-                <h1>Livros</h1>
+                <button id="btn-selector-back" class="icon icon-back">back</button>
+                <h1>Escolher texto</h1>
             </header>
             <article class="content scrollable header">
-                <ul id="book-selector-list"></ul>
-            </article>
-        </section>
-        <section id="chapter-selector" role="region" data-position="right">
-            <header class="fixed">
-                <button id="btn-chapter-selector-back" class="icon icon-back">back</button>
-                <menu id="toolbar">
-                    <button id="btn-home" class="icon icon-home">home</button>
-                </menu>
-                <h1>Capítulos</h1>
-            </header>
-            <article class="content scrollable header">
-                <ul id="chapter-selector-list"></ul>
-            </article>
-        </section>
-        <section id="verse-selector" role="region" data-position="right">
-            <header class="fixed">
-                <button id="btn-verse-selector-back" class="icon icon-back">back</button>
-                <menu id="toolbar">
-                    <button id="btn-home" class="icon icon-home">home</button>
-                </menu>
-                <h1>Versículos</h1>
-            </header>
-            <article class="content scrollable header">
-                <ul id="verse-selector-list"></ul>
+                <ul id="text-selector-tabs" role="tablist" class="bb-tablist">
+                    <li id="panel1" role="presentation">
+                        <a id="books-tab-btn" href="#panel1" role="tab" aria-controls="tabpanel1" aria-selected="true">Livros</a>
+                        <div id="tabpanel1" class="bb-tabpanel" role="tabpanel" aria-labelledby="books-tab-btn">
+                            <ul id="book-selector-list"></ul>
+                        </div>
+                    </li>
+                    <li id="panel2" role="presentation">
+                        <a id="chapters-tab-btn" href="#panel2" role="tab" aria-controls="tabpanel2" aria-disabled="true">Capítulos</a>
+                        <div id="tabpanel2" class="bb-tabpanel" role="tabpanel" aria-labelledby="chapters-tab-btn">
+                            <ul id="chapter-selector-list"></ul>
+                        </div>
+                    </li>
+                    <li id="panel3" role="presentation">
+                        <a id="verses-tab-btn" href="#panel3" role="tab" aria-controls="tabpanel2" aria-disabled="true">Versículos</a>
+                        <div id="tabpanel3" class="bb-tabpanel" role="tabpanel" aria-labelledby="verses-tab-btn">
+                            <ul id="verse-selector-list"></ul>
+                        </div>
+                    </li>
+                </ul>
             </article>
         </section>
 

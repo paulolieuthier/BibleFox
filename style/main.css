@@ -70,6 +70,13 @@ ul#chapter-selector-list > li a, ul#verse-selector-list > li a {
     cursor: pointer;
 }
 
+ul#book-selector-list > li a:active,
+ul#chapter-selector-list > li a:active,
+ul#verse-selector-list > li a:active {
+    background-color: #b2f2ff;
+    color: #fff;
+}
+
 /* reader */
 ul#reader-verses {
     margin-bottom: 5rem;
