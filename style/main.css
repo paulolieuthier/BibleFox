@@ -137,3 +137,15 @@ section[role="region"][data-position="right"] {
 [data-position="current"].current {
     animation: leftToCurrent 0.4s forwards;
 }
+
+/* tabs fix */
+.bb-tablist > li[aria-disabled="true"] > a,
+.bb-tablist > li[aria-disabled="true"] > button,
+.bb-tablist > li[disabled] > a,
+.bb-tablist > li[disabled] > button,
+.bb-tablist > li > a[aria-disabled="true"],
+.bb-tablist > li > button[aria-disabled="true"],
+.bb-tablist > li > a[disabled],
+.bb-tablist > li > button[disabled] {
+  pointer-events: auto !important;;
+}

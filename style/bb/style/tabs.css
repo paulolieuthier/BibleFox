@@ -167,7 +167,7 @@
 .bb-tablist > li > button[disabled] {
   color: #333333;
   opacity: 0.25;
-  pointer-events: none;
+/*   pointer-events: none; */
 }
 
 .bb-tablist.skin-dark > li[aria-disabled="true"] > a,

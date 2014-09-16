@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('#btn-next-chapter').addEventListener('click', function() {
         biblefox.nextChapter().then(function() {
-            updateReader(); 
+            updateReader();
         });
     });
 
@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
     [].forEach.call(document.querySelectorAll('#text-selector-tabs [role="presentation"] a'), function(a) {
         a.addEventListener('click', function(event) {
             event.preventDefault();
+            if (a.getAttribute('aria-disabled') === 'true')
+                return;
+            
             document.querySelector('#text-selector-tabs [role="presentation"] a[aria-selected="true"]').setAttribute('aria-selected', false);
             a.setAttribute('aria-selected', true);
             
