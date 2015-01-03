@@ -1,31 +1,12 @@
-/* header */
-section[role="region"] > header:first-child .icon-home {
-    background-image: url(images/icons/home.png);
-}
-section[role="region"] > header:first-child .icon-book {
-    background-image: url(images/icons/book.png);
-}
-section[role="region"] > header:first-child h1 {
-    text-align: left !important;
-    padding-left: 2rem;
-}
+/* general */
 
-/* main */
-section#index {
+body, html {
+    margin: 0;
     height: 100%;
+    overflow: hidden;
 }
 
-article#main {
-    /* 100% minus header and subheader */
-    height: calc(100% - 8.5rem);
-    padding-top: 0.5rem;
-}
-
-header span#reader-book, header span#reader-chapter {
-    font-weight: bold;
-}
-
-#main-progress {
+.absolute-center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -37,54 +18,77 @@ header span#reader-book, header span#reader-chapter {
     display: none !important;
 }
 
-/* text selector */
-article.content {
+button::-moz-focus-inner {
+    border: none;
+}
+
+/* app */
+
+brick-appbar {
+    background: #F97C17;
+    border-bottom: 1px solid #EEE;
+    position: relative;
+}
+
+brick-appbar h1, brick-appbar button {
+    color: #FFFFFF;
+}
+
+#text-address {
+    background: #F4F4F4;
+    box-shadow: 0 0 1px #EEE;
+    color: #A1A1A1;
+    padding: 0.5rem 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+brick-deck > brick-card {
+    background: white;
+}
+
+/* toolbar */
+
+#toolbar {
     padding: 0;
 }
 
-ul#book-selector-list > li a {
-    border-bottom: 1px solid #EEE;
-    cursor: pointer;
-    display: block;
-    margin: 0 10px;
-    padding: 10px 5px;
+#toolbar button {
+    background: transparent;
+    border: none;
+    padding: 0.8rem 0;
 }
 
-ul#chapter-selector-list, ul#verse-selector-list {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+#toolbar button:disabled {
+    color: #DDD;
 }
 
-ul#chapter-selector-list > li, ul#verse-selector-list > li {
-    flex-grow: 1;
-    margin: 2rem;
-    width: 2rem;
+#toolbar button:active:enabled {
+    color: #FF9500;
 }
 
-ul#chapter-selector-list > li a, ul#verse-selector-list > li a {
-    display: block;
-    line-height: 2rem;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
+/* main */
+
+#main {
+    overflow: hidden;
+    height: 100%;
 }
 
-ul#book-selector-list > li a:active,
-ul#chapter-selector-list > li a:active,
-ul#verse-selector-list > li a:active {
-    background-color: #b2f2ff;
-    color: #fff;
+#main #reader {
+    overflow: auto;
+    height: 100%;
 }
 
-/* reader */
 ul#reader-verses {
-    margin-bottom: 5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 ul#reader-verses li {
-    border-bottom: 1px dashed #EEE;
-    padding: 7px;
+    border-bottom: 1px solid #EEE;
+    margin: 0 1rem;
+    padding: 7px 0;
 }
 
 ul#reader-verses li span.verse-number {
@@ -93,12 +97,13 @@ ul#reader-verses li span.verse-number {
     margin: 10px;
 }
 
-ul#reader-verses li.selected:not(.copyright) span.verse-text {
+ul#reader-verses li[data-selected="true"]:not(.copyright) span.verse-text {
     background: #222;
     color: #FFF;
 }
 
 ul#reader-verses li.copyright {
+    border: none;
     text-align: center;
 }
 
@@ -108,44 +113,80 @@ ul#reader-verses li.copyright a {
     text-decoration: none;
 }
 
-/* pages animation */
-[data-position="right"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translateX(100%);
-    z-index: 15;
-    z-index: 100; /* -> drawer */
-}
-section[role="region"][data-position="right"] {
-    position: absolute;
-}
-[data-position="right"].current {
-    animation: rightToCurrent 0.4s forwards;
-}
-[data-position="right"].right {
-    animation: currentToRight 0.4s forwards;
-}
-[data-position="right"].left {
-    animation: currentToLeft 0.4s forwards;
-}
-[data-position="current"].left {
-    animation: currentToLeft 0.4s forwards;
-}
-[data-position="current"].current {
-    animation: leftToCurrent 0.4s forwards;
+/* text selector */
+
+#text-selector {
+    background: white;
+    transform-style: flat;
+    width: 100%;
+    z-index: 1;
 }
 
-/* tabs fix */
-.bb-tablist > li[aria-disabled="true"] > a,
-.bb-tablist > li[aria-disabled="true"] > button,
-.bb-tablist > li[disabled] > a,
-.bb-tablist > li[disabled] > button,
-.bb-tablist > li > a[aria-disabled="true"],
-.bb-tablist > li > button[aria-disabled="true"],
-.bb-tablist > li > a[disabled],
-.bb-tablist > li > button[disabled] {
-  pointer-events: auto !important;;
+#text-selector brick-tabbar {
+    border: none;
+    order: 2;
+}
+
+#text-selector brick-tabbar-tab button {
+    background: transparent;
+    border: none;
+    display: block;
+    font-size: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+#text-selector brick-deck {
+    order: 1;
+    overflow-x: hidden;
+}
+
+#text-selector brick-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+    height: auto;
+}
+
+#text-selector brick-card#books-list ul li a {
+    border-bottom: 1px solid #EEE;
+    cursor: pointer;
+    display: block;
+    margin: 0 10px;
+    padding: 10px 5px;
+}
+
+#text-selector brick-card#books-list ul li:last-child a {
+    border-bottom: none;
+}
+
+#text-selector brick-card#chapters-list ul,
+#text-selector brick-card#verses-list ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+#text-selector brick-card#chapters-list ul > li,
+#text-selector brick-card#verses-list ul > li {
+    flex-grow: 1;
+    margin: 1.5rem;
+    width: 1.5rem;
+}
+
+#text-selector brick-card#chapters-list ul > li a,
+#text-selector brick-card#verses-list ul > li a {
+    display: block;
+    line-height: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#text-selector brick-card#books-list ul > li a:active,
+#text-selector brick-card#chapters-list ul > li a:active,
+#text-selector brick-card#verses-list ul > li a:active {
+    background-color: #b2f2ff;
+    color: #fff;
 }

@@ -1,5 +1,11 @@
 {
     "name": "BibleFox",
+    "version": "1.0",
+    "description": "Brazillian portguese bible app",
+    "icons": {
+        "64": "/style/images/icon-64.png",
+        "128": "/style/images/icon-128.png"
+    },
     "developer": {
         "name": "Paulo Lieuthier"
     },

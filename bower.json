@@ -1,0 +1,38 @@
+{
+    "name": "BibleFox",
+    "version": "1.0",
+    "homepage": "https://github.com/paulolieuthier/biblefox",
+    "authors": [
+        "Paulo Lieuthier <paulolieuthier@gmail.com>"
+    ],
+    "description": "Bible app for Firefox OS",
+    "main": "index.html",
+    "moduleType": [
+        "es6",
+        "amd"
+    ],
+    "license": "GPL",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "requirejs": "2.1.15",
+        "requirejs-text": "requirejs/text#latest",
+        "backbone": "1.1.2",
+        "zepto": "1.1.4",
+        "handlebars": "2.0.0",
+        "promises": "Octane/Promise",
+        "sql": "kripken/sql.js",
+        "brick-action": "mozbrick/brick-action",
+        "brick-appbar": "mozbrick/brick-appbar",
+        "brick-deck": "mozbrick/brick-deck",
+        "brick-layout": "mozbrick/brick-layout",
+        "brick-menu": "mozbrick/brick-menu",
+        "brick-tabbar": "mozbrick/brick-tabbar"
+    }
+}

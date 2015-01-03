@@ -1,0 +1,21 @@
+<brick-layout>
+    <article flex id="reader">
+        <ul id="reader-verses">
+            {{#each verses}}
+            <li class="verse" data-verse="{{this.verse}}">
+                <span class="verse-number">{{this.verse}}</span>
+                <span class="verse-text">{{this.text}}</span>
+            </li>
+            {{/each}}
+            <li class="copyright">
+                <a>{{bibleName}} &copy;</a>
+            </li>
+        </ul>
+    </article>
+    <brick-menu id="toolbar" horizontal>
+        <!--<button id="btn-search" class="fa fa-search fa-lg" disabled></button>-->
+        <button id="btn-share" class="fa fa-share-alt fa-lg" disabled></button>
+        <button id="btn-prev-chapter" class="fa fa-chevron-left fa-lg"></button>
+        <button id="btn-next-chapter" class="fa fa-chevron-right fa-lg"></button>
+    </brick-menu>
+</brick-layout>

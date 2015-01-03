@@ -1,0 +1,42 @@
+<brick-layout>
+    <brick-tabbar>
+        <brick-tabbar-tab target="books-list" {{#if isBooksTab}}selected{{/if}}>
+           <button>books</button>
+        </brick-tabbar-tab>
+        <brick-tabbar-tab target="chapters-list" {{#if isChaptersTab}}selected{{/if}}>
+           <button {{#if isBooksTab}}disabled{{/if}}>chapters</button>
+        </brick-tabbar-tab>
+        <brick-tabbar-tab target="verses-list" {{#if isVersesTab}}selected{{/if}}>
+           <button {{#unless isVersesTab}}disabled{{/unless}}>verses</button>
+        </brick-tabbar-tab>
+    </brick-tabbar>
+    <brick-deck flex selected-index="{{currentTab}}" transition-type="slide-left">
+        <brick-card id="books-list">
+            <ul>
+                {{#each books}}
+                <li>
+                    <a data-book="{{@key}}">{{this}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </brick-card>
+        <brick-card id="chapters-list">
+            <ul>
+                {{#each chapters}}
+                <li>
+                    <a data-book="{{this.book}}" data-chapter="{{this.chapter}}">{{this.chapter}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </brick-card>
+        <brick-card id="verses-list">
+            <ul>
+                {{#each verses}}
+                <li>
+                    <a data-book="{{this.book}}" data-chapter="{{this.chapter}}" data-verse="{{this.verse}}">{{this.verse}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </brick-card>
+    </brick-deck>
+</brick-layout>
