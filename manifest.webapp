@@ -9,5 +9,8 @@
     "developer": {
         "name": "Paulo Lieuthier"
     },
-    "launch_path": "/index.html"
+    "launch_path": "/index.html",
+    "precompile": [
+        "bower_components/sql/js/sql.js"
+    ]
 }

@@ -20,6 +20,7 @@ define([
         },
 
         initialize: function() {
+            console.log('router initialized');
             this.appView = new AppView({ model: this.bible });
             this.appView.render();
         },

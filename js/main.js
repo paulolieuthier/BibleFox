@@ -22,6 +22,7 @@ require.config({
 });
 
 document.addEventListener('WebComponentsReady', function() {
+    console.log('web components ready');
     require(['backbone', 'underscore', 'global', 'router'], function(Backbone, _, Global, Router) {
         Global.router = new Router();
         Backbone.history.start();
