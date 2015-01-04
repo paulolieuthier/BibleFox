@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Bible Fox</title>
         <meta charset="utf-8" />
         <meta name="theme-color" content="#F97C17">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
-        <title>Bible Fox</title>
-
         <link rel="stylesheet" href="style/main.css" />
-        <link rel="stylesheet" href="style/elements.css" />
 
+        <script type="text/javascript" src="bower_components/platform/platform.js"></script>
         <link rel="import" href="bower_components/brick-layout/dist/brick-layout.html" />
         <link rel="import" href="bower_components/brick-appbar/dist/brick-appbar.html" />
         <link rel="import" href="bower_components/brick-menu/dist/brick-menu.html" />
@@ -16,9 +15,6 @@
         <link rel="import" href="bower_components/brick-deck/dist/brick-deck.html" />
         <link rel="import" href="bower_components/brick-action/dist/brick-action.html" />
 
-        <script type="text/javascript" src="bower_components/platform/platform.js"></script>
-        <script type="text/javascript" src="bower_components/sql/js/sql.js"></script>
-        
         <!-- for older firefox os versions -->
         <script type="text/javascript" src="bower_components/setImmediate/setimmediate.js"></script>
         <script type="text/javascript" src="bower_components/promises/promise.js"></script>
@@ -26,5 +22,8 @@
         <script data-main="js/main" src="bower_components/requirejs/require.js"></script>
     </head>
     <body>
+        <span id="spinner">
+            <i class="fa fa-circle-o-notch fa-spin fa-2x"></i>
+        </span>
     </body>
 </html>

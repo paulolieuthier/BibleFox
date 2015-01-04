@@ -1,4 +1,4 @@
-define([], function() {
+define(['sql'], function(SQL) {
     'use strict';
 
     return {

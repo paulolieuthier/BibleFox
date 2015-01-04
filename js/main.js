@@ -5,7 +5,8 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore-min',
         handlebars: '../bower_components/handlebars/handlebars.min',
-        text: '../bower_components/requirejs-text/text'
+        text: '../bower_components/requirejs-text/text',
+        sql: '../bower_components/sql/js/sql'
     },
     shim: {
         'jquery': {
@@ -22,7 +23,6 @@ require.config({
 
 document.addEventListener('WebComponentsReady', function() {
     require(['backbone', 'underscore', 'global', 'router'], function(Backbone, _, Global, Router) {
-        Global.eventBus = _.extend({}, Backbone.Events);
         Global.router = new Router();
         Backbone.history.start();
     });

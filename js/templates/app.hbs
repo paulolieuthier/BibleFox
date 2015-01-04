@@ -10,7 +10,11 @@
         </header>
     </div>
     <brick-deck flex loop transition-type="slide-down">
-        <brick-card id="main" selected></brick-card>
+        <brick-card id="main" selected>
+            <span id="spinner">
+                <i class="fa fa-circle-o-notch fa-spin fa-2x"></i>
+            </span>
+        </brick-card>
         <brick-card id="text-selector"></brick-card>
     </brick-deck>
 </brick-layout>

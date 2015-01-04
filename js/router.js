@@ -16,7 +16,7 @@ define([
         
         routes: {
             '': 'reader',
-            'reader': 'reader',
+            'reader': 'reader'
         },
 
         initialize: function() {
