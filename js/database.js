@@ -24,6 +24,15 @@ define(['sql'], function(SQL) {
             });
         },
 
+        bibleName: function(bible) {
+            var _this = this;
+            return new Promise(function(fulfill, reject) {
+                _this.db.each('select * from bibles where id = $bible', { $bible: bible }, function(row) {
+                    fulfill(row.title);
+                });
+            });
+        },
+
         books: function() {
             var _this = this;
             return new Promise(function(fulfill, reject) {
