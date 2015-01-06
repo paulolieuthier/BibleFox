@@ -1,6 +1,6 @@
 BibleFox
 ========
 
-Brazillian portuguese bible app for Firefox OS
+Brazillian portuguese bible app for Firefox OS. [Install it](https://marketplace.firefox.com/app/biblefox) from Marketplace.
 
-[Marketplace](https://marketplace.firefox.com/app/biblefox/)
+Firefox 1.3+ supported. Future versions will provide multilingual support.
