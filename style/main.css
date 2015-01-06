@@ -33,7 +33,7 @@ brick-appbar h1, brick-appbar button {
     color: #FFFFFF;
 }
 
-#text-address {
+#sub-header {
     background: #F4F4F4;
     box-shadow: 0 0 1px #EEE;
     color: #A1A1A1;
@@ -123,7 +123,11 @@ ul#reader-verses li.copyright a {
 }
 
 #text-selector brick-tabbar {
-    border: none;
+    border-top: 1px solid #EEE;
+}
+
+#text-selector .selected-indicator {
+    background: #F97C17;
 }
 
 #text-selector brick-tabbar-tab button {
@@ -136,7 +140,12 @@ ul#reader-verses li.copyright a {
 }
 
 #text-selector brick-deck {
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+#text-selector brick-card {
+    background: white;
+    overflow-y: auto;
 }
 
 #text-selector brick-card ul {
@@ -159,22 +168,19 @@ ul#reader-verses li.copyright a {
     border-bottom: none;
 }
 
-#text-selector brick-card#chapters-list ul,
-#text-selector brick-card#verses-list ul {
+#text-selector brick-card#chapters-list ul {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
 }
 
-#text-selector brick-card#chapters-list ul > li,
-#text-selector brick-card#verses-list ul > li {
+#text-selector brick-card#chapters-list ul > li {
     flex-grow: 1;
     margin: 1.5rem;
     width: 1.5rem;
 }
 
-#text-selector brick-card#chapters-list ul > li a,
-#text-selector brick-card#verses-list ul > li a {
+#text-selector brick-card#chapters-list ul > li a {
     display: block;
     line-height: 1.5rem;
     text-align: center;
@@ -182,9 +188,7 @@ ul#reader-verses li.copyright a {
     cursor: pointer;
 }
 
-#text-selector brick-card#books-list ul > li a:active,
-#text-selector brick-card#chapters-list ul > li a:active,
-#text-selector brick-card#verses-list ul > li a:active {
+#text-selector brick-card ul > li a.selected,
+#text-selector brick-card ul > li a:active {
     background-color: #b2f2ff;
-    color: #fff;
 }

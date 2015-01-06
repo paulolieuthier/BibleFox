@@ -1,42 +1,26 @@
 <brick-layout>
-    <brick-deck flex selected-index="{{currentTab}}" transition-type="slide-left">
-        <brick-card id="books-list">
-            <ul>
-                {{#each books}}
-                <li>
-                    <a data-book="{{@key}}">{{this}}</a>
-                </li>
-                {{/each}}
-            </ul>
-        </brick-card>
-        <brick-card id="chapters-list">
-            <ul>
-                {{#each chapters}}
-                <li>
-                    <a data-book="{{this.book}}" data-chapter="{{this.chapter}}">{{this.chapter}}</a>
-                </li>
-                {{/each}}
-            </ul>
-        </brick-card>
-        <brick-card id="verses-list">
-            <ul>
-                {{#each verses}}
-                <li>
-                    <a data-book="{{this.book}}" data-chapter="{{this.chapter}}" data-verse="{{this.verse}}">{{this.verse}}</a>
-                </li>
-                {{/each}}
-            </ul>
-        </brick-card>
-    </brick-deck>
-    <brick-tabbar>
-        <brick-tabbar-tab target="books-list" {{#if isBooksTab}}selected{{/if}}>
-           <button>books</button>
-        </brick-tabbar-tab>
-        <brick-tabbar-tab target="chapters-list" {{#if isChaptersTab}}selected{{/if}}>
-           <button {{#if isBooksTab}}disabled{{/if}}>chapters</button>
-        </brick-tabbar-tab>
-        <brick-tabbar-tab target="verses-list" {{#if isVersesTab}}selected{{/if}}>
-           <button {{#unless isVersesTab}}disabled{{/unless}}>verses</button>
-        </brick-tabbar-tab>
-    </brick-tabbar>
+    <header id="sub-header">Choose text</header>
+    <brick-layout flex>
+        <brick-deck flex selected-index="0" transition-type="slide-left">
+            <brick-card id="books-list">
+                <ul>
+                    {{#each books}}
+                    <li>
+                        <a data-book="{{@key}}">{{this}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </brick-card>
+            <brick-card id="chapters-list">
+            </brick-card>
+        </brick-deck>
+        <brick-tabbar>
+            <brick-tabbar-tab id="books-tab" target="books-list">
+               <button>books</button>
+            </brick-tabbar-tab>
+            <brick-tabbar-tab id="chapters-tab" target="chapters-list">
+               <button disabled>chapters</button>
+            </brick-tabbar-tab>
+        </brick-tabbar>
+    </brick-layout>
 </brick-layout>

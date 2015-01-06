@@ -1,5 +1,9 @@
 <brick-layout>
     <article flex id="reader">
+        <header id="sub-header">
+            <span id="current-book">{{bookName}}</span>
+            <span id="current-chapter">{{chapter}}</span>
+        </header>
         <ul id="reader-verses">
             {{#each verses}}
             <li class="verse" data-verse="{{this.verse}}">

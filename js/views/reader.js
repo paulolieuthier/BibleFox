@@ -43,14 +43,11 @@ define([
                     bibleName: _this.model.bibleName()
                 });
 
-                _this.el.querySelector('#reader').scrollTop = 0;
-                var verseTop = _this.el.querySelector('.verse[data-verse="' + _this.model.verse() + '"]').getBoundingClientRect().top;
-                var mainTop = document.querySelector('#reader').getBoundingClientRect().top;
-                _this.el.querySelector('#reader').scrollTop = verseTop - mainTop;
-
+                document.querySelector('#current-book').innerHTML = _this.model.bookName();
+                document.querySelector('#current-chapter').innerHTML = _this.model.chapter();
             });
         },
-        
+
         verseClicked: function(event) {
             event.preventDefault();
             var el = event.currentTarget;
@@ -61,18 +58,18 @@ define([
                 this.numberOfSelectedVerses++;
                 el.dataset.selected = "true";
             }
-            
+
             this.updateShareButton();
         },
-        
+
         nextChapter: function() {
             this.model.nextChapter();
         },
-        
+
         prevChapter: function() {
             this.model.previousChapter();
         },
-        
+
         updateShareButton: function() {
             this.el.querySelector('#btn-share').disabled = (this.numberOfSelectedVerses === 0);
         },
@@ -80,7 +77,7 @@ define([
         search: function() {
             console.log('search');
         },
-        
+
         share: function() {
             var text = "";
             var address = '';
