@@ -64,10 +64,12 @@ define([
 
         nextChapter: function() {
             this.model.nextChapter();
+            this.numberOfSelectedVerses = 0;
         },
 
         prevChapter: function() {
             this.model.previousChapter();
+            this.numberOfSelectedVerses = 0;
         },
 
         updateShareButton: function() {
