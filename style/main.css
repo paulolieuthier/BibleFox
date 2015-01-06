@@ -74,8 +74,9 @@ brick-deck > brick-card {
 }
 
 #main #reader {
-    overflow: auto;
     height: 100%;
+    overflow: auto;
+    z-index: 10; /* needed for weird scrollbar not woriking issue */
 }
 
 ul#reader-verses {
@@ -123,7 +124,6 @@ ul#reader-verses li.copyright a {
 
 #text-selector brick-tabbar {
     border: none;
-    order: 2;
 }
 
 #text-selector brick-tabbar-tab button {
@@ -136,7 +136,6 @@ ul#reader-verses li.copyright a {
 }
 
 #text-selector brick-deck {
-    order: 1;
     overflow-x: hidden;
 }
 
