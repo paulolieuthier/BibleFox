@@ -18,8 +18,5 @@
             "description": "Aplicación de la Biblia para Firefox OS"
         }
     },
-    "default_locale": "pt-BR",
-    "precompile": [
-        "bower_components/sql/js/sql.js"
-    ]
+    "default_locale": "pt-BR"
 }
