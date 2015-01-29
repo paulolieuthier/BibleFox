@@ -10,6 +10,15 @@
         "name": "Paulo Lieuthier"
     },
     "launch_path": "/index.html",
+    "locales": {
+        "pt-BR": {
+            "description": "App da bíblia para Firefox OS"
+        },
+        "es": {
+            "description": "Aplicación de la Biblia para Firefox OS"
+        }
+    },
+    "default_locale": "pt-BR",
     "precompile": [
         "bower_components/sql/js/sql.js"
     ]

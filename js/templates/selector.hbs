@@ -1,5 +1,5 @@
 <brick-layout>
-    <header id="sub-header">Escolher texto</header>
+    <header id="sub-header" data-l10n-id="chooseText">Choose text</header>
     <brick-layout flex>
         <brick-deck flex selected-index="0" transition-type="slide-left">
             <brick-card id="books-list">
@@ -16,10 +16,10 @@
         </brick-deck>
         <brick-tabbar>
             <brick-tabbar-tab id="books-tab" target="books-list">
-               <button>livros</button>
+               <button data-l10n-id="books">books</button>
             </brick-tabbar-tab>
             <brick-tabbar-tab id="chapters-tab" target="chapters-list">
-               <button disabled>capítulos</button>
+               <button disabled data-l10n-id="chapters">chapters</button>
             </brick-tabbar-tab>
         </brick-tabbar>
     </brick-layout>

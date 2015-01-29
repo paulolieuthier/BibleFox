@@ -31,8 +31,10 @@ define([
         },
         
         render: function() {
-            if (this.ready)
+            if (this.ready){
                 this.el.innerHTML = this.template({ books: this.model.booksNames() });
+                document.l10n.localizeNode(this.el);
+            }
         },
         
         bookClicked: function(event) {
