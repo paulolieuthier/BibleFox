@@ -1,26 +1,23 @@
 <brick-layout>
     <header id="sub-header" data-l10n-id="chooseText">Choose text</header>
-    <brick-layout flex>
-        <brick-deck flex selected-index="0" transition-type="slide-left">
-            <brick-card id="books-list">
-                <ul>
-                    {{#each books}}
-                    <li>
-                        <a data-book="{{@key}}">{{this}}</a>
-                    </li>
-                    {{/each}}
-                </ul>
-            </brick-card>
-            <brick-card id="chapters-list">
-            </brick-card>
-        </brick-deck>
-        <brick-tabbar>
-            <brick-tabbar-tab id="books-tab" target="books-list">
-               <button data-l10n-id="books">books</button>
-            </brick-tabbar-tab>
-            <brick-tabbar-tab id="chapters-tab" target="chapters-list">
-               <button disabled data-l10n-id="chapters">chapters</button>
-            </brick-tabbar-tab>
-        </brick-tabbar>
+    <brick-layout flex horizontal>
+        <brick-layout id="books-and-bibles">
+            <ul id="books-list" flex>
+                {{#each books}}
+                <li>
+                    <a data-book="{{@key}}">{{this}}</a>
+                </li>
+                {{/each}}
+            </ul>
+            <ul id="bibles-list">
+                {{#each bibles}}
+                <li>
+                    <a data-bible="{{this.ID}}">{{this.Language}} ({{this.Abbreviation}})</a>
+                </li>
+                {{/each}}
+            </ul>
+        </brick-layout>
+        <ul id="chapters-list">
+        </ul>
     </brick-layout>
 </brick-layout>

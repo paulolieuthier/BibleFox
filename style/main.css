@@ -122,73 +122,85 @@ ul#reader-verses li.copyright a {
     z-index: 1;
 }
 
-#text-selector brick-tabbar {
-    border-top: 1px solid #EEE;
-}
-
 #text-selector .selected-indicator {
     background: #F97C17;
 }
 
-#text-selector brick-tabbar-tab button {
-    background: transparent;
-    border: none;
-    display: block;
-    font-size: 100%;
-    height: 100%;
-    width: 100%;
-}
-
-#text-selector brick-deck {
-    overflow: hidden;
-}
-
-#text-selector brick-card {
-    background: white;
-    overflow-y: auto;
-}
-
-#text-selector brick-card ul {
-    margin: 0;
+#text-selector ul {
+    margin: 0.75rem 10px 0;
     padding: 0;
     list-style: none;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     height: auto;
 }
 
-#text-selector brick-card#books-list ul li a {
+#text-selector #books-and-bibles {
+    flex: 3;
+    margin-right: 0;
+}
+
+#text-selector #books-list,
+#text-selector #bibles-list {
+    margin-right: 0;
+}
+
+#text-selector #books-list li a,
+#text-selector #bibles-list li a {
     border-bottom: 1px solid #EEE;
     cursor: pointer;
     display: block;
-    margin: 0 10px;
+    overflow: hidden;
     padding: 10px 5px;
+    white-space: nowrap;
 }
 
-#text-selector brick-card#books-list ul li:last-child a {
+#text-selector #books-list li:last-child a,
+#text-selector #bibles-list li:last-child a {
     border-bottom: none;
 }
 
-#text-selector brick-card#chapters-list ul {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+#text-selector #books-list {
+    margin-bottom: 0;
 }
 
-#text-selector brick-card#chapters-list ul > li {
+#text-selector #bibles-list {
+    border-top: 2px solid #CCCCCC;
+    font-size: 90%;
+    margin-bottom: 0.75rem;
+    margin-top: 10px;
+    padding-top: 5px;
+}
+
+#text-selector #chapters-list {
+    align-content: flex-start;
+    display: flex;
+    flex: 4;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#text-selector #chapters-list li {
     flex-grow: 1;
-    margin: 1.5rem;
+}
+
+#text-selector #chapters-list li a {
+    cursor: pointer;
+    display: block;
+    font-size: 1.3rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
     width: 1.5rem;
 }
 
-#text-selector brick-card#chapters-list ul > li a {
-    display: block;
-    line-height: 1.5rem;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-}
-
-#text-selector brick-card ul > li a.selected,
-#text-selector brick-card ul > li a:active {
+#text-selector ul > li a.selected,
+#text-selector ul > li a:active {
     background-color: #b2f2ff;
 }

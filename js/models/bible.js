@@ -3,6 +3,7 @@ define(['backbone', 'database'], function(Backbone, Database) {
     
     return Backbone.Model.extend({
         
+        allBibles: null,
         allBooks: null,
         bibleTitle: '',
         
@@ -19,27 +20,57 @@ define(['backbone', 'database'], function(Backbone, Database) {
             var _this = this
             Database.initialize('bibles/database.sqlite').then(function() {
                 _this.ready = true;
-                
+                return _this.reloadBooks();
+            }).then(function() {
                 return new Promise(function(fulfill, reject) {
-                    Database.books(_this.reader.bible).then(function(books) {
-                        _this.allBooks = books;
+                    Database.bibles().then(function(bibles) {
+                        _this.allBibles = bibles;
                         fulfill();
                     });
                 });
-
             }).then(function() {
-                // retrive from the database and save the bible's name
-                return Database.bibleName(_this.reader.bible).then(function(bibleName) {
-                    return bibleName;
-                });
-            }).then(function(bibleName) {
-                _this.bibleTitle = bibleName;
                 _this.trigger('ready');
             });
         },
         
         bibleName: function() {
-            return this.bibleTitle;
+            var bibles = this.bibles();
+            var length = bibles.length;
+            for (var i = 0; i < length; i++)
+                if (bibles[i].ID === this.bible())
+                    return bibles[i].Title;
+            return "";
+        },
+
+        bible: function() {
+            return this.reader.bible;
+        },
+
+        bibles: function() {
+            return this.allBibles;
+        },
+
+        changeBible: function(bible) {
+            var b = bible !== undefined ? Number(bible) : 1;
+
+            if (b < 1 || b > 66)
+                return;
+
+            this.reader.bible = b;
+            this.trigger('changed');
+            localStorage.setItem('last-bible', this.reader.bible);
+
+            return this.reloadBooks(b);
+        },
+
+        reloadBooks: function(bible) {
+            var _this = this;
+            return new Promise(function(fulfill, reject) {
+                Database.books(_this.reader.bible).then(function(books) {
+                    _this.allBooks = books;
+                    fulfill();
+                });
+            });
         },
 
         booksNames: function() {
@@ -49,6 +80,10 @@ define(['backbone', 'database'], function(Backbone, Database) {
         bookName: function(book) {
             var b = book !== undefined ? Number(book) : this.reader.book;
             return this.allBooks[b];
+        },
+
+        book: function() {
+            return this.reader.book;
         },
 
         chapters: function(book) {
@@ -83,12 +118,8 @@ define(['backbone', 'database'], function(Backbone, Database) {
             this.reader.chapter = c;
             this.reader.verse = v;
 
-            this.reader.chaptersCache = null;
-            this.reader.versesCache = null;
-
             this.trigger('changed');
 
-            localStorage.setItem('last-bible', this.reader.bible);
             localStorage.setItem('last-book', this.reader.book);
             localStorage.setItem('last-chapter', this.reader.chapter);
             localStorage.setItem('last-verse', this.reader.verse);

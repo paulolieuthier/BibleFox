@@ -24,11 +24,14 @@ define(['sql'], function(SQL) {
             });
         },
 
-        bibleName: function(bible) {
+        bibles: function() {
             var _this = this;
             return new Promise(function(fulfill, reject) {
-                _this.db.each('SELECT * FROM Bibles WHERE ID = $bible', { $bible: bible }, function(row) {
-                    fulfill(row.Title);
+                var bibles = [];
+                _this.db.each('SELECT * FROM Bibles ORDER BY Language', function(row) {
+                    bibles.push(row);
+                }, function() {
+                    fulfill(bibles);
                 });
             });
         },
