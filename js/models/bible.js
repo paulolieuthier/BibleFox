@@ -21,7 +21,7 @@ define(['backbone', 'database'], function(Backbone, Database) {
                 _this.ready = true;
                 
                 return new Promise(function(fulfill, reject) {
-                    Database.books().then(function(books) {
+                    Database.books(_this.reader.bible).then(function(books) {
                         _this.allBooks = books;
                         fulfill();
                     });
@@ -53,7 +53,7 @@ define(['backbone', 'database'], function(Backbone, Database) {
 
         chapters: function(book) {
             var b = book !== undefined ? Number(book) : this.reader.book;
-            return Database.chapters(b);
+            return Database.chapters(this.reader.bible, b);
         },
 
         chapter: function() {
@@ -64,7 +64,7 @@ define(['backbone', 'database'], function(Backbone, Database) {
             var b = data.book !== undefined ? Number(data.book) : this.reader.book,
             c = data.chapter !== undefined ? Number(data.chapter) : this.reader.chapter;
 
-            return Database.verses(b, c);
+            return Database.verses(this.reader.bible, b, c);
         },
 
         verse: function() {
@@ -96,10 +96,11 @@ define(['backbone', 'database'], function(Backbone, Database) {
 
         nextChapter: function() {
             var _this = this,
-            book = this.reader.book,
-            chapter = this.reader.chapter;
+                bible = this.reader.bible,
+                book = this.reader.book,
+                chapter = this.reader.chapter;
 
-            Database.chapterExists(book, chapter + 1).then(function(exists) {
+            Database.chapterExists(bible, book, chapter + 1).then(function(exists) {
                 if (exists)
                     _this.goTo(book, chapter + 1);
                 else
@@ -109,14 +110,15 @@ define(['backbone', 'database'], function(Backbone, Database) {
 
         previousChapter: function() {
             var _this = this,
-            book = this.reader.book,
-            chapter = this.reader.chapter;
+                bible = this.reader.bible,
+                book = this.reader.book,
+                chapter = this.reader.chapter;
 
-            Database.chapterExists(book, chapter - 1).then(function(exists) {
+            Database.chapterExists(bible, book, chapter - 1).then(function(exists) {
                 if (exists)
                     _this.goTo(book, chapter - 1);
                 else
-                    Database.lastChapter(book - 1).then(function(lastChapter) {
+                    Database.lastChapter(bible, book - 1).then(function(lastChapter) {
                         _this.goTo(book - 1, lastChapter);
                     });
             });

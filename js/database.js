@@ -27,30 +27,30 @@ define(['sql'], function(SQL) {
         bibleName: function(bible) {
             var _this = this;
             return new Promise(function(fulfill, reject) {
-                _this.db.each('select * from bibles where id = $bible', { $bible: bible }, function(row) {
-                    fulfill(row.title);
+                _this.db.each('SELECT * FROM Bibles WHERE ID = $bible', { $bible: bible }, function(row) {
+                    fulfill(row.Title);
                 });
             });
         },
 
-        books: function() {
+        books: function(bible) {
             var _this = this;
             return new Promise(function(fulfill, reject) {
                 var books = {};
-                _this.db.each('select * from books', function(row) {
-                    books[Number(row.id)] = row.title;
+                _this.db.each('SELECT * FROM Books WHERE Bible = $bible ORDER BY "Index"', { $bible: bible }, function(row) {
+                    books[Number(row.Index)] = row.Title;
                 }, function() {
                     fulfill(books);
                 });
             });
         },
 
-        chapters: function(book) {
+        chapters: function(bible, book) {
             var _this = this;
             return new Promise(function(fulfill, reject) {
                 var chapters = [];
-                var stmt = _this.db.prepare('select book, chapter from verses where book = ? group by chapter');
-                stmt.bind([book]);
+                var stmt = _this.db.prepare('SELECT Book, Chapter FROM Verses WHERE Bible = ? AND Book = ? GROUP BY Book, Chapter');
+                stmt.bind([bible, book]);
                 while (stmt.step())
                     chapters.push(stmt.getAsObject());
                 stmt.free();
@@ -58,12 +58,12 @@ define(['sql'], function(SQL) {
             })
         },
 
-        verses: function(book, chapter) {
+        verses: function(bible, book, chapter) {
             var _this = this;
             return new Promise(function(fulfill, reject) {
                 var verses = [];
-                var stmt = _this.db.prepare('select * from verses where book = ? and chapter = ?');
-                stmt.bind([book, chapter]);
+                var stmt = _this.db.prepare('SELECT * FROM Verses WHERE Bible = ? AND Book = ? AND Chapter = ?');
+                stmt.bind([bible, book, chapter]);
                 while (stmt.step())
                     verses.push(stmt.getAsObject());
                 fulfill(verses);
@@ -71,11 +71,11 @@ define(['sql'], function(SQL) {
             });
         },
 
-        chapterExists: function(book, chapter) {
+        chapterExists: function(bible, book, chapter) {
             var _this = this;
             return new Promise(function(fulfill, reject) {
-                var stmt = _this.db.prepare('select count(*) from verses where book = ? and chapter = ?');
-                stmt.bind([book, chapter]);
+                var stmt = _this.db.prepare('SELECT COUNT(*) FROM Verses WHERE Bible = ? AND Book = ? AND Chapter = ?');
+                stmt.bind([bible, book, chapter]);
                 stmt.step();
                 var result = stmt.get()[0] > 0;
                 stmt.free();
@@ -83,11 +83,11 @@ define(['sql'], function(SQL) {
             });
         },
 
-        lastChapter: function(book) {
+        lastChapter: function(bible, book) {
             var _this = this;
             return new Promise(function(fulfill, reject) {
-                var stmt = _this.db.prepare('select chapter from verses where book = ? order by chapter desc limit 1');
-                stmt.bind([book]);
+                var stmt = _this.db.prepare('SELECT Chapter FROM Verses WHERE Bible = ? AND Book = ? ORDER BY Chapter DESC LIMIT 1');
+                stmt.bind([bible, book]);
                 stmt.step();
                 var result = stmt.get()[0];
                 stmt.free();
