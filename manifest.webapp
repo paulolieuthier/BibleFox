@@ -1,21 +1,22 @@
 {
     "name": "BibleFox",
     "version": "2.1",
-    "description": "Brazillian portguese bible app",
+    "description": "Bible app",
     "icons": {
         "64": "/style/images/icon-64.png",
         "128": "/style/images/icon-128.png"
     },
     "developer": {
-        "name": "Paulo Lieuthier"
+        "name": "Paulo Lieuthier",
+        "url": "https://github.com/paulolieuthier"
     },
     "launch_path": "/index.html",
     "locales": {
         "pt-BR": {
-            "description": "App da bíblia para Firefox OS"
+            "description": "App da bíblia"
         },
         "es": {
-            "description": "Aplicación de la Biblia para Firefox OS"
+            "description": "Aplicación de la Biblia"
         }
     },
     "default_locale": "pt-BR"
